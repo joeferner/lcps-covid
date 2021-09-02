@@ -1,7 +1,6 @@
 import cheerio, { Cheerio, CheerioAPI, Element } from "cheerio";
-import { resourceLimits } from "worker_threads";
-import { SchoolData } from "../model/SchoolData";
-import { SchoolType } from "../model/SchoolType";
+import { SchoolData } from "../../model/SchoolData";
+import { SchoolType } from "../../model/SchoolType";
 
 export class HtmlParseService {
     parse(html: string): SchoolData[] {
