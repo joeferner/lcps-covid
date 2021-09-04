@@ -2,14 +2,15 @@ import axios from "axios";
 import fs from "fs";
 import path from "path";
 import { DailyData } from "../../model/DailyData";
+import { Data } from "../../model/Data";
+import { School } from "../../model/School";
 import { HtmlParseService } from "./HtmlParseService";
 
 const htmlParseService = new HtmlParseService();
 
 export async function run(): Promise<void> {
     const dir = getDataDir();
-    await fetchLatestData(dir);
-    const allData = fs.readdirSync(dir)
+    const dailyData = fs.readdirSync(dir)
         .filter(f => f.endsWith('.html'))
         .map(htmlFilename => {
             console.log(`processing ${htmlFilename}`);
@@ -17,6 +18,7 @@ export async function run(): Promise<void> {
             let json: DailyData;
             if (fs.existsSync(jsonFile)) {
                 json = JSON.parse(fs.readFileSync(jsonFile, 'utf8'));
+                json.date = new Date(json.date);
             } else {
                 const html = fs.readFileSync(path.join(dir, htmlFilename), 'utf8');
                 json = {
@@ -26,12 +28,27 @@ export async function run(): Promise<void> {
                 fs.writeFileSync(jsonFile, JSON.stringify(json, null, 2));
             }
             return json;
+        })
+        .sort((a, b) => {
+            return a.date.getTime() - b.date.getTime();
         });
-    fs.writeFileSync(path.join(__dirname, '../../../build/data.json'), JSON.stringify(allData, null, 2));
-    fs.writeFileSync(path.join(__dirname, '../../../public/data.json'), JSON.stringify(allData, null, 2));
+    await fetchLatestData(dir, dailyData);
+    const schoolNames = new Set<string>(dailyData.flatMap(dd => dd.schoolData.map(sd => sd.name)));
+    const schools: School[] = [...schoolNames]
+        .map(name => {
+            return {
+                name
+            };
+        });
+    const all: Data = {
+        schools,
+        dailyData
+    };
+    fs.writeFileSync(path.join(__dirname, '../../../build/data.json'), JSON.stringify(all));
+    fs.writeFileSync(path.join(__dirname, '../../../public/data.json'), JSON.stringify(all));
 }
 
-async function fetchLatestData(dir: string): Promise<void> {
+async function fetchLatestData(dir: string, dailyData: DailyData[]): Promise<void> {
     const date = new Date();
     const dateString = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     const filename = path.join(dir, `${dateString}.html`);
@@ -45,7 +62,16 @@ async function fetchLatestData(dir: string): Promise<void> {
         console.error(response);
         throw new Error('bad fetch');
     }
-    await fs.promises.writeFile(filename, response.data);
+    const json = {
+        date: new Date(dateString),
+        schoolData: htmlParseService.parse(response.data)
+    };
+    if (JSON.stringify(json.schoolData) !== JSON.stringify(dailyData[dailyData.length - 1].schoolData)) {
+        console.log('saving new data');
+        await fs.promises.writeFile(filename, response.data);
+        await fs.promises.writeFile(`${filename}.json`, JSON.stringify(json, null, 2));
+        dailyData.push(json);
+    }
 }
 
 function getDataDir(): string {
