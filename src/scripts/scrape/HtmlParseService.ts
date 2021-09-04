@@ -65,11 +65,14 @@ export class HtmlParseService {
         if (str.includes('ES')) {
             return SchoolType.ElementarySchool;
         }
-        if (str.includes('MS')) {
+        if (str.includes('MS') || str.includes('Middle')) {
             return SchoolType.MiddleSchool;
         }
         if (str.includes('HS')) {
             return SchoolType.HighSchool;
+        }
+        if (str === 'Administration Building' || str === 'Transportation') {
+            return SchoolType.Other;
         }
         throw new Error(`could not parse school type "${str}"`);
     }

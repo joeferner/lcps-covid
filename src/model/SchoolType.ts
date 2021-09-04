@@ -1,5 +1,6 @@
 export enum SchoolType {
     ElementarySchool = 'ElementarySchool',
     MiddleSchool = 'MiddleSchool',
-    HighSchool = 'HighSchool'
+    HighSchool = 'HighSchool',
+    Other = 'Other'
 }

@@ -5,7 +5,7 @@ import { SchoolType } from "../../model/SchoolType";
 
 test('parses', async () => {
     const parser = new HtmlParseService();
-    const html = await fs.promises.readFile(path.join(__dirname, "../../../test-data/covid-case-data.html"), 'utf8');
+    const html = await fs.promises.readFile(path.join(__dirname, "../../../test-data/2021-08-31.html"), 'utf8');
     const schoolData = parser.parse(html);
     expect(schoolData.length).toBe(32);
     expect(schoolData[0].name).toBe('Arcola ES');
