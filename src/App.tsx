@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { CurrentTotals } from "./CurrentTotals";
+import { DataLineChart } from "./DataLineChart";
 import { DailyData } from "./model/DailyData";
 import { Data } from "./model/Data";
 import { School } from "./model/School";
@@ -78,14 +79,21 @@ export function App() {
 
   return (
     <div>
-      <a href="https://www.lcps.org/COVID19data">Source</a>
-      <CurrentTotals mostRecentDailyData={mostRecentDailyData} secondMostRecentDailyData={secondMostRecentDailyData} />
-      <SchoolList
-        onFavoriteToggle={handleFavoriteToggle}
-        favoriteSchoolNames={favoriteSchoolNames}
-        schools={schools}
-        mostRecentDailyData={mostRecentDailyData}
-        secondMostRecentDailyData={secondMostRecentDailyData} />
+      <div>
+        <a href="https://www.lcps.org/COVID19data">Source</a>
+      </div>
+      <div>
+        <CurrentTotals mostRecentDailyData={mostRecentDailyData} secondMostRecentDailyData={secondMostRecentDailyData} />
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <SchoolList
+          onFavoriteToggle={handleFavoriteToggle}
+          favoriteSchoolNames={favoriteSchoolNames}
+          schools={schools}
+          mostRecentDailyData={mostRecentDailyData}
+          secondMostRecentDailyData={secondMostRecentDailyData} />
+        <DataLineChart dailyData={dailyData} favoriteSchoolNames={favoriteSchoolNames} />
+      </div>
     </div>
   );
 }
