@@ -1,4 +1,4 @@
-import { Paper } from "@material-ui/core";
+import { makeStyles, Paper } from "@material-ui/core";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import { Area, AreaChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
@@ -31,8 +31,21 @@ function xAxisTickFormatter(tickItem: any): string {
     }
 }
 
+function labelFormatter(date: Date): string {
+    return moment(date).format('M/d/yyyy');
+}
+
+const useStyles = makeStyles({
+    header: {
+        textAlign: 'center',
+        paddingTop: '10px'
+    },
+});
+
 export function DataLineChart(props: DataLineChartProps) {
-    const [dataPoints, setDataPoints] = useState<DataPoint[]>([]);
+    const classes = useStyles();
+    const [activeDataPoints, setActiveDataPoints] = useState<DataPoint[]>([]);
+    const [quarentineDataPoints, setQuarentineDataPoints] = useState<DataPoint[]>([]);
 
     useEffect(() => {
         const newDataPoints: DataPoint[] = (props.dailyData || []).map(dd => {
@@ -60,15 +73,59 @@ export function DataLineChart(props: DataLineChartProps) {
                 other
             };
         });
-        setDataPoints(newDataPoints);
-    }, [props.dailyData, props.favoriteSchoolNames, setDataPoints]);
+        setActiveDataPoints(newDataPoints);
+    }, [props.dailyData, props.favoriteSchoolNames, setActiveDataPoints]);
+
+    useEffect(() => {
+        const newDataPoints: DataPoint[] = (props.dailyData || []).map(dd => {
+            const favorite = sum(dd.schoolData
+                .filter(sd => props.favoriteSchoolNames.includes(sd.name))
+                .map(sd => sd.staffQuarantining + sd.studentQuarantining));
+            const elementarySchool = sum(dd.schoolData
+                .filter(sd => sd.type === SchoolType.ElementarySchool && !props.favoriteSchoolNames.includes(sd.name))
+                .map(sd => sd.staffQuarantining + sd.studentQuarantining));
+            const middleSchool = sum(dd.schoolData
+                .filter(sd => sd.type === SchoolType.MiddleSchool && !props.favoriteSchoolNames.includes(sd.name))
+                .map(sd => sd.staffQuarantining + sd.studentQuarantining));
+            const highSchool = sum(dd.schoolData
+                .filter(sd => sd.type === SchoolType.HighSchool && !props.favoriteSchoolNames.includes(sd.name))
+                .map(sd => sd.staffQuarantining + sd.studentQuarantining));
+            const other = sum(dd.schoolData
+                .filter(sd => sd.type === SchoolType.Other && !props.favoriteSchoolNames.includes(sd.name))
+                .map(sd => sd.staffQuarantining + sd.studentQuarantining));
+            return {
+                date: dd.date,
+                favorite,
+                elementarySchool,
+                middleSchool,
+                highSchool,
+                other
+            };
+        });
+        setQuarentineDataPoints(newDataPoints);
+    }, [props.dailyData, props.favoriteSchoolNames, setQuarentineDataPoints]);
 
     return (<Paper>
         <div style={{ margin: '5px' }}>
-            <AreaChart width={500} height={300} data={dataPoints}>
+            <h2 className={classes.header}>Active Cases</h2>
+            <AreaChart width={500} height={300} data={activeDataPoints}>
                 <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
                 <YAxis />
-                <Tooltip />
+                <Tooltip labelFormatter={labelFormatter} />
+                <Legend />
+                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                <Area type="monotone" dataKey="favorite" name="Favorite" stackId="1" stroke="#184a49" fill="#184a49" />
+                <Area type="monotone" dataKey="elementarySchool" name="ES" stackId="1" stroke="#c78045" fill="#ffa357" />
+                <Area type="monotone" dataKey="middleSchool" name="MS" stackId="1" stroke="#a7a3a0" fill="#ccc7c3" />
+                <Area type="monotone" dataKey="highSchool" name="HS" stackId="1" stroke="#387577" fill="#438d90" />
+                <Area type="monotone" dataKey="other" name="Other" stackId="1" stroke="#8b9fa5" fill="#bedbe3" />
+            </AreaChart>
+
+            <h2 className={classes.header}>Quarentined</h2>
+            <AreaChart width={500} height={300} data={quarentineDataPoints}>
+                <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
+                <YAxis />
+                <Tooltip labelFormatter={labelFormatter} />
                 <Legend />
                 <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
                 <Area type="monotone" dataKey="favorite" name="Favorite" stackId="1" stroke="#184a49" fill="#184a49" />
