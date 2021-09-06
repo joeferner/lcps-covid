@@ -57,7 +57,7 @@ const useStyles = makeStyles({
 export function DataLineChart(props: DataLineChartProps) {
     const classes = useStyles();
     const [activeDataPoints, setActiveDataPoints] = useState<DataPoint[]>([]);
-    const [quarentineDataPoints, setQuarentineDataPoints] = useState<DataPoint[]>([]);
+    const [quarantineDataPoints, setQuarantineDataPoints] = useState<DataPoint[]>([]);
 
     useEffect(() => {
         const newDataPoints: DataPoint[] = (props.dailyData || []).map(dd => {
@@ -114,8 +114,8 @@ export function DataLineChart(props: DataLineChartProps) {
                 other
             };
         });
-        setQuarentineDataPoints(newDataPoints);
-    }, [props.dailyData, props.favoriteSchoolNames, setQuarentineDataPoints]);
+        setQuarantineDataPoints(newDataPoints);
+    }, [props.dailyData, props.favoriteSchoolNames, setQuarantineDataPoints]);
 
     return (<Paper>
         <div className={classes.wrapper}>
@@ -138,9 +138,9 @@ export function DataLineChart(props: DataLineChartProps) {
             </div>
 
             <div className={classes.chartWrapper}>
-                <h2 className={classes.header}>Quarentined</h2>
+                <h2 className={classes.header}>Quarantined</h2>
                 <ResponsiveContainer height={400} width="100%">
-                    <AreaChart data={quarentineDataPoints}>
+                    <AreaChart data={quarantineDataPoints}>
                         <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
                         <YAxis />
                         <Tooltip labelFormatter={labelFormatter} />

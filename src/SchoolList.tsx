@@ -36,10 +36,10 @@ export function SchoolList(props: SchoolListProps) {
                 <TableHead>
                     <TableRow>
                         <TableCell>School Name</TableCell>
-                        <TableCell className="staffActiveCases"><div>Staff Active Cases</div></TableCell>
-                        <TableCell className="staffQuarentined"><div>Staff Quarentined</div></TableCell>
-                        <TableCell className="studentActiveCases"><div>Student Active Cases</div></TableCell>
-                        <TableCell className="studentQuarentined"><div>Student Quarentined</div></TableCell>
+                        <TableCell className="staffActiveCases" title="Staff Active Cases"><div>Staff Active Cases</div></TableCell>
+                        <TableCell className="staffQuarantined" title="Staff Quarantined"><div>Staff Quarantined</div></TableCell>
+                        <TableCell className="studentActiveCases" title="Student Active Cases"><div>Student Active Cases</div></TableCell>
+                        <TableCell className="studentQuarantined" title="Student Quarantined"><div>Student Quarantined</div></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
