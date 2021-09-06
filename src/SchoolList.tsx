@@ -31,15 +31,15 @@ export function SchoolList(props: SchoolListProps) {
     };
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} className="schoolList">
             <Table>
                 <TableHead>
                     <TableRow>
                         <TableCell>School Name</TableCell>
-                        <TableCell>Staff Active Cases</TableCell>
-                        <TableCell>Staff Quarentined</TableCell>
-                        <TableCell>Student Active Cases</TableCell>
-                        <TableCell>Student Quarentined</TableCell>
+                        <TableCell className="staffActiveCases"><div>Staff Active Cases</div></TableCell>
+                        <TableCell className="staffQuarentined"><div>Staff Quarentined</div></TableCell>
+                        <TableCell className="studentActiveCases"><div>Student Active Cases</div></TableCell>
+                        <TableCell className="studentQuarentined"><div>Student Quarentined</div></TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

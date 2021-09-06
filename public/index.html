@@ -22,13 +22,36 @@
       flex-grow: 1;
     }
 
-    .MuiTableContainer-root, .MuiTable-root {
+    .MuiTableContainer-root,
+    .MuiTable-root {
       width: auto !important;
       max-height: 300px;
     }
 
     .recharts-legend-wrapper {
       position: inherit !important;
+    }
+
+    @media screen and (max-width: 650px) {
+      .schoolList .staffQuarentined div {
+        display: none;
+      }
+
+      .schoolList .staffQuarentined:after {
+        content: "Staff Quaren...";
+      }
+
+      .schoolList .studentQuarentined div {
+        display: none;
+      }
+
+      .schoolList .studentQuarentined:after {
+        content: "Student Quaren...";
+      }
+
+      .MuiTableRow-root .MuiTableCell-root {
+        padding: 5px;
+      }
     }
   </style>
 </head>

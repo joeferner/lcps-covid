@@ -1,7 +1,7 @@
 import { makeStyles, Paper } from "@material-ui/core";
 import moment from "moment";
 import { useEffect, useState } from "react";
-import { Area, AreaChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { DailyData } from "./model/DailyData";
 import { SchoolType } from "./model/SchoolType";
 
@@ -47,6 +47,11 @@ const useStyles = makeStyles({
         textAlign: 'center',
         paddingTop: '10px'
     },
+    chartWrapper: {
+        flexGrow: 1,
+        minWidth: '300px',
+        maxWidth: '500px'
+    }
 });
 
 export function DataLineChart(props: DataLineChartProps) {
@@ -114,36 +119,40 @@ export function DataLineChart(props: DataLineChartProps) {
 
     return (<Paper>
         <div className={classes.wrapper}>
-            <div>
+            <div className={classes.chartWrapper}>
                 <h2 className={classes.header}>Active Cases</h2>
-                <AreaChart width={500} height={300} data={activeDataPoints}>
-                    <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
-                    <YAxis />
-                    <Tooltip labelFormatter={labelFormatter} />
-                    <Legend />
-                    <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                    <Area type="monotone" dataKey="favorite" name="Favorite" stackId="1" stroke="#184a49" fill="#184a49" />
-                    <Area type="monotone" dataKey="elementarySchool" name="ES" stackId="1" stroke="#c78045" fill="#ffa357" />
-                    <Area type="monotone" dataKey="middleSchool" name="MS" stackId="1" stroke="#a7a3a0" fill="#ccc7c3" />
-                    <Area type="monotone" dataKey="highSchool" name="HS" stackId="1" stroke="#387577" fill="#438d90" />
-                    <Area type="monotone" dataKey="other" name="Other" stackId="1" stroke="#8b9fa5" fill="#bedbe3" />
-                </AreaChart>
+                <ResponsiveContainer height={400} width="100%">
+                    <AreaChart data={activeDataPoints}>
+                        <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
+                        <YAxis />
+                        <Tooltip labelFormatter={labelFormatter} />
+                        <Legend />
+                        <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                        <Area type="monotone" dataKey="favorite" name="Favorite" stackId="1" stroke="#184a49" fill="#184a49" />
+                        <Area type="monotone" dataKey="elementarySchool" name="ES" stackId="1" stroke="#c78045" fill="#ffa357" />
+                        <Area type="monotone" dataKey="middleSchool" name="MS" stackId="1" stroke="#a7a3a0" fill="#ccc7c3" />
+                        <Area type="monotone" dataKey="highSchool" name="HS" stackId="1" stroke="#387577" fill="#438d90" />
+                        <Area type="monotone" dataKey="other" name="Other" stackId="1" stroke="#8b9fa5" fill="#bedbe3" />
+                    </AreaChart>
+                </ResponsiveContainer>
             </div>
 
-            <div>
+            <div className={classes.chartWrapper}>
                 <h2 className={classes.header}>Quarentined</h2>
-                <AreaChart width={500} height={300} data={quarentineDataPoints}>
-                    <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
-                    <YAxis />
-                    <Tooltip labelFormatter={labelFormatter} />
-                    <Legend />
-                    <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                    <Area type="monotone" dataKey="favorite" name="Favorite" stackId="1" stroke="#184a49" fill="#184a49" />
-                    <Area type="monotone" dataKey="elementarySchool" name="ES" stackId="1" stroke="#c78045" fill="#ffa357" />
-                    <Area type="monotone" dataKey="middleSchool" name="MS" stackId="1" stroke="#a7a3a0" fill="#ccc7c3" />
-                    <Area type="monotone" dataKey="highSchool" name="HS" stackId="1" stroke="#387577" fill="#438d90" />
-                    <Area type="monotone" dataKey="other" name="Other" stackId="1" stroke="#8b9fa5" fill="#bedbe3" />
-                </AreaChart>
+                <ResponsiveContainer height={400} width="100%">
+                    <AreaChart data={quarentineDataPoints}>
+                        <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
+                        <YAxis />
+                        <Tooltip labelFormatter={labelFormatter} />
+                        <Legend />
+                        <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                        <Area type="monotone" dataKey="favorite" name="Favorite" stackId="1" stroke="#184a49" fill="#184a49" />
+                        <Area type="monotone" dataKey="elementarySchool" name="ES" stackId="1" stroke="#c78045" fill="#ffa357" />
+                        <Area type="monotone" dataKey="middleSchool" name="MS" stackId="1" stroke="#a7a3a0" fill="#ccc7c3" />
+                        <Area type="monotone" dataKey="highSchool" name="HS" stackId="1" stroke="#387577" fill="#438d90" />
+                        <Area type="monotone" dataKey="other" name="Other" stackId="1" stroke="#8b9fa5" fill="#bedbe3" />
+                    </AreaChart>
+                </ResponsiveContainer>
             </div>
         </div>
     </Paper>);
