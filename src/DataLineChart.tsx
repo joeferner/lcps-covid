@@ -36,6 +36,13 @@ function labelFormatter(date: Date): string {
 }
 
 const useStyles = makeStyles({
+    wrapper: {
+        margin: '5px',
+        display: 'flex',
+        flexDirection: 'row',
+        paddingBottom: '25px',
+        flexWrap: 'wrap'
+    },
     header: {
         textAlign: 'center',
         paddingTop: '10px'
@@ -106,34 +113,38 @@ export function DataLineChart(props: DataLineChartProps) {
     }, [props.dailyData, props.favoriteSchoolNames, setQuarentineDataPoints]);
 
     return (<Paper>
-        <div style={{ margin: '5px' }}>
-            <h2 className={classes.header}>Active Cases</h2>
-            <AreaChart width={500} height={300} data={activeDataPoints}>
-                <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
-                <YAxis />
-                <Tooltip labelFormatter={labelFormatter} />
-                <Legend />
-                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                <Area type="monotone" dataKey="favorite" name="Favorite" stackId="1" stroke="#184a49" fill="#184a49" />
-                <Area type="monotone" dataKey="elementarySchool" name="ES" stackId="1" stroke="#c78045" fill="#ffa357" />
-                <Area type="monotone" dataKey="middleSchool" name="MS" stackId="1" stroke="#a7a3a0" fill="#ccc7c3" />
-                <Area type="monotone" dataKey="highSchool" name="HS" stackId="1" stroke="#387577" fill="#438d90" />
-                <Area type="monotone" dataKey="other" name="Other" stackId="1" stroke="#8b9fa5" fill="#bedbe3" />
-            </AreaChart>
+        <div className={classes.wrapper}>
+            <div>
+                <h2 className={classes.header}>Active Cases</h2>
+                <AreaChart width={500} height={300} data={activeDataPoints}>
+                    <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
+                    <YAxis />
+                    <Tooltip labelFormatter={labelFormatter} />
+                    <Legend />
+                    <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                    <Area type="monotone" dataKey="favorite" name="Favorite" stackId="1" stroke="#184a49" fill="#184a49" />
+                    <Area type="monotone" dataKey="elementarySchool" name="ES" stackId="1" stroke="#c78045" fill="#ffa357" />
+                    <Area type="monotone" dataKey="middleSchool" name="MS" stackId="1" stroke="#a7a3a0" fill="#ccc7c3" />
+                    <Area type="monotone" dataKey="highSchool" name="HS" stackId="1" stroke="#387577" fill="#438d90" />
+                    <Area type="monotone" dataKey="other" name="Other" stackId="1" stroke="#8b9fa5" fill="#bedbe3" />
+                </AreaChart>
+            </div>
 
-            <h2 className={classes.header}>Quarentined</h2>
-            <AreaChart width={500} height={300} data={quarentineDataPoints}>
-                <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
-                <YAxis />
-                <Tooltip labelFormatter={labelFormatter} />
-                <Legend />
-                <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-                <Area type="monotone" dataKey="favorite" name="Favorite" stackId="1" stroke="#184a49" fill="#184a49" />
-                <Area type="monotone" dataKey="elementarySchool" name="ES" stackId="1" stroke="#c78045" fill="#ffa357" />
-                <Area type="monotone" dataKey="middleSchool" name="MS" stackId="1" stroke="#a7a3a0" fill="#ccc7c3" />
-                <Area type="monotone" dataKey="highSchool" name="HS" stackId="1" stroke="#387577" fill="#438d90" />
-                <Area type="monotone" dataKey="other" name="Other" stackId="1" stroke="#8b9fa5" fill="#bedbe3" />
-            </AreaChart>
+            <div>
+                <h2 className={classes.header}>Quarentined</h2>
+                <AreaChart width={500} height={300} data={quarentineDataPoints}>
+                    <XAxis dataKey="date" tickFormatter={xAxisTickFormatter} />
+                    <YAxis />
+                    <Tooltip labelFormatter={labelFormatter} />
+                    <Legend />
+                    <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                    <Area type="monotone" dataKey="favorite" name="Favorite" stackId="1" stroke="#184a49" fill="#184a49" />
+                    <Area type="monotone" dataKey="elementarySchool" name="ES" stackId="1" stroke="#c78045" fill="#ffa357" />
+                    <Area type="monotone" dataKey="middleSchool" name="MS" stackId="1" stroke="#a7a3a0" fill="#ccc7c3" />
+                    <Area type="monotone" dataKey="highSchool" name="HS" stackId="1" stroke="#387577" fill="#438d90" />
+                    <Area type="monotone" dataKey="other" name="Other" stackId="1" stroke="#8b9fa5" fill="#bedbe3" />
+                </AreaChart>
+            </div>
         </div>
     </Paper>);
 }
