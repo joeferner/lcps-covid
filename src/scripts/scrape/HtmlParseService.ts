@@ -71,7 +71,7 @@ export class HtmlParseService {
         if (str.includes('HS')) {
             return SchoolType.HighSchool;
         }
-        if (str === 'Administration Building' || str === 'Transportation') {
+        if (str === 'Administration Building' || str === 'Transportation' || str === 'Academies of Loudoun') {
             return SchoolType.Other;
         }
         throw new Error(`could not parse school type "${str}"`);
