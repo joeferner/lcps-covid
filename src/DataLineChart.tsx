@@ -25,14 +25,14 @@ function sum(arr: number[]): number {
 
 function xAxisTickFormatter(tickItem: any): string {
     if (typeof tickItem.getMonth === 'function') {
-        return moment(tickItem).format('M/d');
+        return moment(tickItem).format('M/D');
     } else {
         return tickItem;
     }
 }
 
 function labelFormatter(date: Date): string {
-    return moment(date).format('M/d/yyyy');
+    return moment(date).format('M/D/yyyy');
 }
 
 const useStyles = makeStyles({
