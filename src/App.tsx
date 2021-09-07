@@ -70,7 +70,8 @@ export function App() {
             const data = response.data as Data;
             const responseDailyData = data.dailyData
                 .map(a => {
-                    a.date = new Date(a.date);
+                    const m = a.date.match('([0-9]+)-([0-9]+)-([0-9]+).*');
+                    a.date = new Date(`${m[1]}/${m[2]}/${m[3]}`);
                     return a;
                 })
                 .sort((a, b) => {
