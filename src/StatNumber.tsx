@@ -21,12 +21,13 @@ export interface StatNumberProps {
 export function StatNumber(props: StatNumberProps) {
     const classes = useStyles();
 
-    if (props.lastValue && props.value !== props.lastValue) {
-        const plusMinus = (props.value > props.lastValue) ? '+' : '-';
-        const className = props.value > props.lastValue ? classes.plus : classes.minus;
+    const lastValue = props.lastValue || 0;
+    if (props.value !== lastValue) {
+        const plusMinus = (props.value > lastValue) ? '+' : '-';
+        const className = props.value > lastValue ? classes.plus : classes.minus;
         return (<span>
             {props.value.toLocaleString()}
-            <span className={`${classes.plusMinus} ${className}`}>{plusMinus}{Math.abs(props.value - props.lastValue).toLocaleString()}</span>
+            <span className={`${classes.plusMinus} ${className}`}>{plusMinus}{Math.abs(props.value - lastValue).toLocaleString()}</span>
         </span>);
     }
     return (<span>
