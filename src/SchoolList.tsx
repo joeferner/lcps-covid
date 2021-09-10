@@ -32,7 +32,7 @@ export function SchoolList(props: SchoolListProps) {
 
     return (
         <TableContainer component={Paper} className="schoolList">
-            <Table>
+            <Table stickyHeader>
                 <TableHead>
                     <TableRow>
                         <TableCell>School Name</TableCell>
