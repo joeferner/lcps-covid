@@ -106,6 +106,9 @@ export function App() {
                     secondMostRecentDailyData={secondMostRecentDailyData} />
                 <DataLineChart dailyData={dailyData} favoriteSchoolNames={favoriteSchoolNames} />
             </div>
+            <div>
+                <a href="https://github.com/joeferner/lcps-covid/">GitHub</a>
+            </div>
         </div>
     );
 }
