@@ -49,12 +49,12 @@ export async function run(): Promise<void> {
 }
 
 async function fetchLatestData(dir: string, dailyData: DailyData[]): Promise<void> {
-    const date = new Date();
+    const date = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
+    if (date.getHours() < 4 || date.getHours() > 20) {
+        return; // don't update in middle of night
+    }
     const dateString = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
     const filename = path.join(dir, `${dateString}.html`);
-    if (fs.existsSync(filename)) {
-        return;
-    }
     const url = 'https://www.lcps.org/COVID19data';
     console.log(`fetching ${url} -> ${filename}`);
     const response = await axios.get(url);
