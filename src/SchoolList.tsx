@@ -1,9 +1,10 @@
-import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@material-ui/core";
+import { makeStyles, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel } from "@material-ui/core";
 import { DailyData } from "./model/DailyData";
 import { School } from "./model/School";
 import { SchoolData } from "./model/SchoolData";
 import { StatNumber } from "./StatNumber";
 import { FavoriteBorder, Favorite } from '@material-ui/icons';
+import { useEffect, useState } from "react";
 
 export interface SchoolListProps {
     mostRecentDailyData: DailyData | undefined;
@@ -23,11 +24,80 @@ const useStyles = makeStyles({
     }
 });
 
+const COLUMNS = [
+    { title: 'School Name', column: 'name' },
+    { title: 'Staff Active Cases', column: 'staffActiveCases' },
+    { title: 'Staff Quarantined', column: 'staffQuarantining' },
+    { title: 'Student Active Cases', column: 'studentActiveCases' },
+    { title: 'Student Quarantined', column: 'studentQuarantining' }
+];
+
+function findSchoolData(dailyData: DailyData | undefined, schoolName: string): SchoolData | undefined {
+    return dailyData?.schoolData.find(sd => sd.name === schoolName);
+}
+
+function sortSchools(
+    schoolsToSort: School[],
+    orderBy: keyof SchoolData | undefined,
+    order: 'asc' | 'desc',
+    schoolData: DailyData | undefined,
+    favoriteSchoolNames: string[]
+): School[] {
+    const schools: School[] = [...schoolsToSort];
+    const myOrderBy = orderBy || 'name';
+    const compare = (a: School, b: School): number => {
+        if (myOrderBy === 'name') {
+            return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
+        }
+        const aSchoolData = findSchoolData(schoolData, a.name);
+        const bSchoolData = findSchoolData(schoolData, b.name);
+        if (!aSchoolData && !bSchoolData) {
+            return 0;
+        }
+        if (!aSchoolData) {
+            return -1;
+        }
+        if (!bSchoolData) {
+            return 1;
+        }
+        const aValue = (aSchoolData[myOrderBy] || 0) as number;
+        const bValue = (bSchoolData[myOrderBy] || 0) as number;
+        return aValue - bValue;
+    };
+    const applyOrder = (n: number): number => {
+        return order === 'asc' ? n : -n;
+    }
+    schools.sort((a, b) => {
+        const aIsFavorite = favoriteSchoolNames.includes(a.name);
+        const bIsFavorite = favoriteSchoolNames.includes(b.name);
+        if (aIsFavorite && bIsFavorite) {
+            return applyOrder(compare(a, b));
+        }
+        if (aIsFavorite) {
+            return -1;
+        }
+        if (bIsFavorite) {
+            return 1;
+        }
+        return applyOrder(compare(a, b));
+    });
+    return schools;
+}
+
 export function SchoolList(props: SchoolListProps) {
+    const [orderBy, setOrderBy] = useState<keyof SchoolData | undefined>(undefined);
+    const [order, setOrder] = useState<'asc' | 'desc'>('asc');
+    const [schools, setSchools] = useState<School[]>([]);
     const classes = useStyles();
 
-    const findSchoolData = (dailyData: DailyData | undefined, schoolName: string): SchoolData | undefined => {
-        return dailyData?.schoolData.find(sd => sd.name === schoolName);
+    useEffect(() => {
+        setSchools(sortSchools(props.schools || [], orderBy, order, props.mostRecentDailyData, props.favoriteSchoolNames));
+    }, [props.schools, props.mostRecentDailyData, props.favoriteSchoolNames, order, orderBy]);
+
+    const handleSort = (column: string): void => {
+        const isAsc = orderBy === column && order === 'asc';
+        setOrder(isAsc ? 'desc' : 'asc');
+        setOrderBy(column as keyof SchoolData);
     };
 
     return (
@@ -35,15 +105,20 @@ export function SchoolList(props: SchoolListProps) {
             <Table stickyHeader>
                 <TableHead>
                     <TableRow>
-                        <TableCell>School Name</TableCell>
-                        <TableCell className="staffActiveCases" title="Staff Active Cases"><div>Staff Active Cases</div></TableCell>
-                        <TableCell className="staffQuarantined" title="Staff Quarantined"><div>Staff Quarantined</div></TableCell>
-                        <TableCell className="studentActiveCases" title="Student Active Cases"><div>Student Active Cases</div></TableCell>
-                        <TableCell className="studentQuarantined" title="Student Quarantined"><div>Student Quarantined</div></TableCell>
+                        {COLUMNS.map(column => {
+                            return (<TableCell className={column.column} title={column.title} key={column.column}>
+                                <TableSortLabel
+                                    active={orderBy === column.column}
+                                    direction={orderBy === column.column ? order : 'asc'}
+                                    onClick={() => handleSort(column.column)}>
+                                    <div className="columnTitle">{column.title}</div>
+                                </TableSortLabel>
+                            </TableCell>);
+                        })}
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.schools?.map(school => {
+                    {schools.map(school => {
                         const mostRecentSchoolData = findSchoolData(props.mostRecentDailyData, school.name);
                         const secondMostRecentSchoolData = findSchoolData(props.secondMostRecentDailyData, school.name);
                         const isFavorite = props.favoriteSchoolNames.includes(school.name);
