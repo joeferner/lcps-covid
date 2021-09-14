@@ -1,0 +1,429 @@
+{
+  "date": "2021-09-13T00:00:00.000Z",
+  "schoolData": [
+    {
+      "name": "Algonkian ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Arcola ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 4,
+      "studentQuarantining": 3
+    },
+    {
+      "name": "Balls Bluff ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Banneker ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 14
+    },
+    {
+      "name": "Belmont Ridge MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 4
+    },
+    {
+      "name": "Blue Ridge MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 4,
+      "studentQuarantining": 2
+    },
+    {
+      "name": "Brambleton MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Buffalo Trail ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 4,
+      "studentQuarantining": 5
+    },
+    {
+      "name": "Cedar Lane ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 2,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Cool Spring ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 2
+    },
+    {
+      "name": "Creighton's Corner ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 3,
+      "studentQuarantining": 14
+    },
+    {
+      "name": "Dominion HS",
+      "type": "HighSchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Emerick ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 6
+    },
+    {
+      "name": "Evergreen Mill ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 2,
+      "studentQuarantining": 7
+    },
+    {
+      "name": "Frances Hazel Reid ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 10
+    },
+    {
+      "name": "Frederick Douglass ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Harmony MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Heritage HS",
+      "type": "HighSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 1
+    },
+    {
+      "name": "Horizon ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 6
+    },
+    {
+      "name": "Hovatter ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 2
+    },
+    {
+      "name": "Hutchison Farm ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 1,
+      "studentActiveCases": 1,
+      "studentQuarantining": 6
+    },
+    {
+      "name": "J L Simpson MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 3,
+      "studentQuarantining": 18
+    },
+    {
+      "name": "John Champe HS",
+      "type": "HighSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 2,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "John W. Tolbert Jr. ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 1,
+      "studentActiveCases": 1,
+      "studentQuarantining": 24
+    },
+    {
+      "name": "Kenneth W. Culbert ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Liberty ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 2,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Lightridge HS",
+      "type": "HighSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 4
+    },
+    {
+      "name": "Little River ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 8
+    },
+    {
+      "name": "Loudoun Valley HS",
+      "type": "HighSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 5,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Lowes Island ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 3
+    },
+    {
+      "name": "Madison's Trust ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 2,
+      "studentQuarantining": 14
+    },
+    {
+      "name": "Mercer MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 1
+    },
+    {
+      "name": "Mountain View ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 17
+    },
+    {
+      "name": "Park View HS",
+      "type": "HighSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 6
+    },
+    {
+      "name": "Pinebrook ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 20
+    },
+    {
+      "name": "Potomac Falls HS",
+      "type": "HighSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 5,
+      "studentQuarantining": 11
+    },
+    {
+      "name": "Potowmack ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "River Bend MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Riverside HS",
+      "type": "HighSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Rosa Lee Carter ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 2,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 3
+    },
+    {
+      "name": "Round Hill ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Smart's Mill MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 2,
+      "staffQuarantining": 0,
+      "studentActiveCases": 0,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Sterling ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 2
+    },
+    {
+      "name": "Sterling MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Steuart W. Weller ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 2,
+      "studentQuarantining": 2
+    },
+    {
+      "name": "Stone Bridge HS",
+      "type": "HighSchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 1,
+      "studentActiveCases": 1,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Stone Hill MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 1,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Sycolin Creek ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 2
+    },
+    {
+      "name": "Trailside MS",
+      "type": "MiddleSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 4
+    },
+    {
+      "name": "Transportation",
+      "type": "Other",
+      "staffActiveCases": 0,
+      "staffQuarantining": 4,
+      "studentActiveCases": 0,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Tuscarora HS",
+      "type": "HighSchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 3,
+      "studentQuarantining": 0
+    },
+    {
+      "name": "Waxpool ES",
+      "type": "ElementarySchool",
+      "staffActiveCases": 0,
+      "staffQuarantining": 0,
+      "studentActiveCases": 1,
+      "studentQuarantining": 7
+    },
+    {
+      "name": "Woodgrove HS",
+      "type": "HighSchool",
+      "staffActiveCases": 2,
+      "staffQuarantining": 2,
+      "studentActiveCases": 3,
+      "studentQuarantining": 3
+    }
+  ]
+}

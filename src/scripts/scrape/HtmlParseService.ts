@@ -18,7 +18,7 @@ export class HtmlParseService {
         for (const table of $('table').toArray()) {
             const $table = $(table);
             const columnCount = this.getTableColumnCount($, $table);
-            if (columnCount === 5) {
+            if (columnCount > 0 && columnCount < 5) {
                 return $table;
             }
         }
@@ -26,18 +26,18 @@ export class HtmlParseService {
     }
 
     private getTableColumnCount($: CheerioAPI, $table: Cheerio<Element>): number {
-        const row = $('tr', $table)[0];
-        return $('td', row).length;
+        const row = $('tbody tr', $table)[0];
+        return $('td.qv-st-data-cell-numeric', row).length;
     }
 
     private getTableData($: CheerioAPI, $table: Cheerio<Element>): string[][] {
         const results: string[][] = [];
-        for (const row of $('tr', $table).toArray()) {
+        for (const row of $('tbody tr', $table).toArray()) {
             const $row = $(row);
             const resultRow: string[] = [];
             for (const column of $('td', $row).toArray()) {
                 const $column = $(column);
-                resultRow.push($column.text());
+                resultRow.push($column.text().trim());
             }
             results.push(resultRow);
         }
