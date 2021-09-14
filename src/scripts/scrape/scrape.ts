@@ -73,7 +73,11 @@ async function fetchLatestData(dir: string, dailyData: DailyData[]): Promise<voi
 
 async function downloadHtml(url: string): Promise<string> {
     let html;
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        args: [
+            '--no-sandbox'
+        ]
+    });
     try {
         const page = await browser.newPage();
         await page.setViewport({ width: 2000, height: 100000 })
