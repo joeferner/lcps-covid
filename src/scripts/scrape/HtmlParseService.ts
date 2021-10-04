@@ -62,7 +62,7 @@ export class HtmlParseService {
     }
 
     parseSchoolType(str: string): SchoolType {
-        if (str.includes('ES')) {
+        if (str.includes('ES') || str === 'Hillsboro Charter Academy') {
             return SchoolType.ElementarySchool;
         }
         if (str.includes('MS') || str.includes('Middle')) {
@@ -71,7 +71,11 @@ export class HtmlParseService {
         if (str.includes('HS')) {
             return SchoolType.HighSchool;
         }
-        if (str === 'Administration Building' || str === 'Transportation' || str === 'Academies of Loudoun') {
+        if (str === 'Administration Building'
+            || str === 'Transportation'
+            || str === 'Academies of Loudoun'
+            || str === 'Facilities'
+            || str == 'Staff Training Center') {
             return SchoolType.Other;
         }
         throw new Error(`could not parse school type "${str}"`);
