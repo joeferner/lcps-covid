@@ -75,7 +75,9 @@ export class HtmlParseService {
             || str === 'Transportation'
             || str === 'Academies of Loudoun'
             || str === 'Facilities'
-            || str == 'Staff Training Center') {
+            || str == 'Staff Training Center'
+            || str === 'Safety and Security'
+            || str === 'The North Star School') {
             return SchoolType.Other;
         }
         throw new Error(`could not parse school type "${str}"`);
